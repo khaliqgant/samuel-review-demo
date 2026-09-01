@@ -1,4 +1,7 @@
 node_modules/
 dist/
+package-lock.json
+# samuel-review writes all of these into the repo it runs in — ignore them:
 .samuel-review/
 .agent-relay/
+.agentworkforce/

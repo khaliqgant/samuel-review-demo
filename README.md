@@ -53,17 +53,35 @@ the two review lanes in parallel → summary). That live log + the files under
   SUMMARY.md    the two reviews on one page — read this first
 ```
 
-## Run it on a real PR
+## Run it on a real PR (your repo)
 
-From the root of any repo, on the branch you want reviewed:
+You do **not** need to install anything into your repo. Install this tool once
+(the `npm install` above), then point it at any checkout — `tsx` resolves
+`@relayflows/core` from *this* folder, while the review runs against your
+current directory:
 
 ```bash
+cd ~/your-repo
 git checkout the-pr-branch
-BASE=main npx tsx /path/to/samuel-review.ts     # or BASE=develop, etc.
+BASE=main npx tsx /abs/path/to/samuel-review-demo/samuel-review.ts   # BASE = what the PR merges into
 ```
 
-`BASE` is whatever the PR merges into. The flow only reads; it never pushes,
-commits, or posts.
+Your repo only needs `codex` and `git` on PATH. The flow only reads — it never
+pushes, commits, or posts.
+
+**One-time: ignore the output.** The run writes `.samuel-review/`,
+`.agent-relay/`, and `.agentworkforce/` (trajectories + run state) into the
+directory you run in. Add these to your repo's `.gitignore`:
+
+```gitignore
+.samuel-review/
+.agent-relay/
+.agentworkforce/
+```
+
+(Prefer to vendor it instead? Copy `samuel-review.ts` into your repo,
+`npm i -D @relayflows/core tsx`, add the three ignore lines, then
+`npx tsx samuel-review.ts`.)
 
 > One edit before a real repo: the `checks` step in `samuel-review.ts` runs
 > generic `npm run lint / tsc --noEmit / npm test / npm run build`. Point those
