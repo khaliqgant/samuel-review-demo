@@ -63,8 +63,11 @@ current directory:
 ```bash
 cd ~/your-repo
 git checkout the-pr-branch
-BASE=main npx tsx /abs/path/to/samuel-review-demo/samuel-review.ts   # BASE = what the PR merges into
+BASE=main ~/samuel-review-demo/node_modules/.bin/tsx ~/samuel-review-demo/samuel-review.ts
 ```
+
+`BASE` = what the PR merges into. Using the demo's own `.bin/tsx` (not `npx tsx`)
+keeps it non-interactive — no install prompt in a repo that has no `tsx`.
 
 Your repo only needs `codex` and `git` on PATH. The flow only reads — it never
 pushes, commits, or posts.
