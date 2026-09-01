@@ -1,0 +1,17 @@
+{
+  "name": "samuel-review-demo",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "description": "A tiny repo with one deliberately-flawed PR, so samuel-review has something real to review.",
+  "scripts": {
+    "lint": "echo 'lint: (demo ships no linter — that is fine, the flow tolerates it)'",
+    "build": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts"
+  },
+  "devDependencies": {
+    "@relayflows/core": "1.0.6",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
