@@ -1,3 +1,3 @@
-export function log(msg: string): void {
-  console.log(`[oauth] ${msg}`);
+export function log(msg: string, level: string = 'info'): void {
+  console.log(`[oauth] [${level}] ${msg}`);
 }
